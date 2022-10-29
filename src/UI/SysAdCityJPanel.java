@@ -30,7 +30,7 @@ public class SysAdCityJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(City city: cityhistory.getCityHistory()){
         
-            Object[] row = new Object[10];
+            Object[] row = new Object[1];
             row[0] = city.getCityName();
             model.addRow(row);
         }

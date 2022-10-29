@@ -27,13 +27,14 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
         initComponents();
         this.patientDirectory = patientDirectory;
         this.personDirectory = personDirectory;
+        populateTable();
     }
 
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel)PatientJTable.getModel();
         model.setRowCount(0);
         for(Patient pats: patientDirectory.getPatHistory()){
-            Object[] row = new Object[10];
+            Object[] row = new Object[5];
             row[0] = pats.getPatientID();
             row[1] = pats.getName();
             row[2] = pats.getAge();

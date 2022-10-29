@@ -35,13 +35,14 @@ public class SysAdPersonJPanel extends javax.swing.JPanel {
         this.cityHistory = cityHistory;
         this.houseHistory = houseHistory;
         this.personDirectory = personDirectory;
+        populateTable();
     }
     
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel)PersonJTable.getModel();
         model.setRowCount(0);
         for(Person pers: personDirectory.getPerHistory()){
-            Object[] row = new Object[10];
+            Object[] row = new Object[6];
             row[0] = pers.getPersonID();
             row[1] = pers.getName();
             row[2] = pers.getAge();
@@ -223,6 +224,8 @@ public class SysAdPersonJPanel extends javax.swing.JPanel {
             PersonNew.setName(Nametxt.getText());
             PersonNew.setAge(Integer.parseInt(Agetxt.getText()));
             PersonNew.setHouse(ApartmentNotxt.getText());
+            PersonNew.setCommunity(Communitytxt.getText());
+            PersonNew.setCity(Citytxt.getText());
             house.person.add(PersonNew);
             JOptionPane.showMessageDialog(this, "New Person Added in the house");
         }
@@ -286,7 +289,7 @@ private boolean validate(String ID, String Name, int age, String houses, String 
         for(int i =0;i<cityHistory.CityHistory.size();i++){
             c1 = cityHistory.CityHistory.get(i);
             if(city.equals(c1.getCityName())){
-                if(c1.getCommunityList().contains(community)){
+                if(c1.getCommunities().contains(community)){
                     for(int j=0; j<communityHistory.commHistory.size();j++){
                         comm = communityHistory.commHistory.get(j);
                         if(community.equals(comm.getCommName())){

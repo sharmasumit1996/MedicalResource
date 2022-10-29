@@ -34,7 +34,7 @@ public class SysAdCommunityJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(Community comm: communityhistory.getCommHistory()){
         
-            Object[] row = new Object[10];
+            Object[] row = new Object[2];
             row[0] = comm.getCommName();
             row[1] = comm.getCity();
             model.addRow(row);
@@ -75,6 +75,11 @@ public class SysAdCommunityJPanel extends javax.swing.JPanel {
         });
 
         UpdateCommbtn.setText("Update");
+        UpdateCommbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateCommbtnActionPerformed(evt);
+            }
+        });
 
         DeleteCommbtn.setText("Delete");
         DeleteCommbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +99,11 @@ public class SysAdCommunityJPanel extends javax.swing.JPanel {
                 "Community Name", "City Name"
             }
         ));
+        CommJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CommJTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(CommJTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -189,6 +199,42 @@ public class SysAdCommunityJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_SavecommbtnActionPerformed
 
+    private void CommJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CommJTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRowIndex = CommJTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) CommJTable.getModel();
+        CommNametxt.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        CityNametxt.setText(model.getValueAt(selectedRowIndex, 1).toString());
+    }//GEN-LAST:event_CommJTableMouseClicked
+
+    private void UpdateCommbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCommbtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = CommJTable.getSelectedRow();
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+        if(validate(CommNametxt.getText(),CityNametxt.getText())){
+            Community comm = new Community();
+            comm.setCommName(CommNametxt.getText());
+            comm.setCity(CityNametxt.getText());
+            String CommunityName = CommNametxt.getText();
+            for(Community comm1: communityhistory.getCommHistory()){
+            if (CommunityName.equals(comm.getCommName())){
+               communityhistory.deleteCommunity(comm1);
+                break;
+            }
+        }
+        Community comm2 = communityhistory.addNewValue();
+        comm2.setCommName(CommNametxt.getText());
+        comm2.setCity(CityNametxt.getText());
+        JOptionPane.showMessageDialog(this, "Community has been Updated");
+        CommNametxt.setText("");
+        CityNametxt.setText("");
+        populateTable();
+        }
+    }//GEN-LAST:event_UpdateCommbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CityNamelbl;
@@ -208,7 +254,6 @@ private boolean validate(String CommunityName, String CityName) {
         City city;
         boolean fetch = true,exists = false;
         for(int i =0;i<cityhistory.CityHistory.size();i++){
-           
             city = cityhistory.CityHistory.get(i);
             if(CityName.equals(city.getCityName())){
                 fetch = false;

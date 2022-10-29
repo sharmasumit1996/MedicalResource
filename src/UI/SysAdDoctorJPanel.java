@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Model.City;
 import Model.Doctor;
 import Model.DoctorDirectory;
 import Model.Hospital;
@@ -27,13 +28,14 @@ public class SysAdDoctorJPanel extends javax.swing.JPanel {
         initComponents();
         this.doctorDirectory = doctorDirectory;
         this.hospitalDirectory = hospitalDirectory;
+        populateTable();
     }
     
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel)DoctorJTable.getModel();
         model.setRowCount(0);
         for(Doctor docs: doctorDirectory.getDocHistory()){
-            Object[] row = new Object[10];
+            Object[] row = new Object[5];
             row[0] = docs.getDoctorID();
             row[1] = docs.getName();
             row[2] = docs.getAge();
@@ -240,7 +242,11 @@ public class SysAdDoctorJPanel extends javax.swing.JPanel {
             DoctorNew.setHospital(Hospitaltxt.getText());
             DoctorNew.setUsername(Usernametxt.getText());
             DoctorNew.setPassword(Passwordtxt.getText());
-            hospital.doctor.add(DoctorNew);
+            for(Hospital hospi: hospitalDirectory.HospitalDirectory){
+                if(hospi.getHospitalName().equals(Hospitaltxt.getText())){
+                    hospi.doctor.add(DoctorNew);
+                }
+            }
             JOptionPane.showMessageDialog(this, "New Person Added in the house");
         }
         IDtxt.setText("");
@@ -279,21 +285,20 @@ public class SysAdDoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-private boolean validate(String DoctorID, String name, String Age, String Gender, String Hospital,String Username, String Password) {
+private boolean validate(String DoctorID, String name, String Age, String Gender, String HospitalName,String Username, String Password) {
         //To change body of generated methods, choose Tools | Templates.
         Hospital hosp;
         boolean fetch = true,exists = false;
         for(int i =0;i<hospitalDirectory.HospitalDirectory.size();i++){
-           
             hosp = hospitalDirectory.HospitalDirectory.get(i);
-            if(Hospital.equals(hosp.getDoctor())){
+            if(HospitalName.equals(hosp.getHospitalName())){
                 fetch = false;
                 hosp.append(name);
                 break;
             }
         }
         for(Doctor doc: doctorDirectory.getDocHistory()){
-            if(doc.getName().equals(name) && doc.getHospital().equals(Hospital)){
+            if(doc.getDoctorID().equals(DoctorID) && doc.getHospital().equals(HospitalName)){
                 exists = true;
             }
         }
@@ -327,7 +332,7 @@ private boolean validate(String DoctorID, String name, String Age, String Gender
             JOptionPane.showMessageDialog(this, "Password should be atleast 8 characters long", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if(Hospital.length()==0){
+        if(HospitalName.length()==0){
             JOptionPane.showMessageDialog(this, "Hospital cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }

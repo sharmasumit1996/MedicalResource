@@ -10,7 +10,6 @@ import Model.Community;
 import Model.CommunityHistory;
 import Model.Hospital;
 import Model.HospitalDirectory;
-import Model.House;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -31,17 +30,19 @@ public class SysAdHospitalJPanel extends javax.swing.JPanel {
         this.hospitalDirectory = hospitalDirectory;
         this.cityHistory = cityhistory;
         this.communityHistory = communityhistory;
+        populateTable();
     }
 
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel)HospitalJTable.getModel();
         model.setRowCount(0);
         for(Hospital hosp: hospitalDirectory.getHospitalDirectory()){
-            Object[] row = new Object[10];
+            Object[] row = new Object[5];
+            System.out.println(hosp.getCity());
             row[0] = hosp.getHospitalName();
             row[1] = hosp.getCommunity();
-            row[4] = hosp.getCity();
-            row[3] = hosp.getZipcode();
+            row[3] = hosp.getCity();
+            row[4] = hosp.getZipcode();
             model.addRow(row);
         }
     }
@@ -182,7 +183,7 @@ public class SysAdHospitalJPanel extends javax.swing.JPanel {
             catch(NullPointerException e){
                 System.out.println("Null Pointer Exception for House");
             }
-            JOptionPane.showMessageDialog(this, "New House Added");
+            JOptionPane.showMessageDialog(this, "New Hospital Added");
         }
         HospitalNametxt.setText("");
         Communitytxt.setText("");
@@ -218,10 +219,12 @@ private boolean validate(String HospitalName, String CommunityName, String CityN
         for(i =0;i<cityHistory.CityHistory.size();i++){
             city = cityHistory.CityHistory.get(i);
             if(CityName.equals(city.getCityName())){
-                if(city.getCommunityList().contains(CommunityName)){
+                System.out.println("Here "+city.getCityName());
+                if(city.getCommunities().contains(CommunityName)){
+                    System.out.println("Here now");
                     for(j=0; j<communityHistory.commHistory.size();j++){
                         comm = communityHistory.commHistory.get(j);
-                        if(CommunityName.equals(community.getCommName())){
+                        if(CommunityName.equals(comm.getCommName())){
                             fetch = false;
                             comm.append(HospitalName);
                             community = comm;

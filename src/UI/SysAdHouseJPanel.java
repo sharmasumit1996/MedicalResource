@@ -31,18 +31,19 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
         this.houseHistory = househistory;
         this.cityHistory = cityhistory;
         this.communityHistory = communityhistory;
+        populateTable();
     }
 
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel)HouseJTable.getModel();
         model.setRowCount(0);
         for(House hous: houseHistory.getHouseHistory()){
-            Object[] row = new Object[10];
+            Object[] row = new Object[5];
             row[0] = hous.getHouseNumber();
-            row[1] = hous.getCommunity();
-            row[2] = hous.getStreet();
+            row[1] = hous.getStreet();
+            row[2] = hous.getCity();            
             row[3] = hous.getZipcode();
-            row[4] = hous.getCity();
+            row[4] = hous.getCommunity();
             model.addRow(row);
         }
     }
@@ -214,6 +215,7 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
 
     private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_DeletebtnActionPerformed
 
     private void HouseJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HouseJTableMouseClicked
@@ -224,7 +226,6 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
         StreetNotxt.setText(model.getValueAt(selectedRowIndex, 1).toString());
         Citytxt.setText(model.getValueAt(selectedRowIndex, 2).toString());
         Ziptxt.setText(model.getValueAt(selectedRowIndex, 3).toString());
-
     }//GEN-LAST:event_HouseJTableMouseClicked
 
 
@@ -256,10 +257,12 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
         for(i =0;i<cityHistory.CityHistory.size();i++){
             city = cityHistory.CityHistory.get(i);
             if(CityName.equals(city.getCityName())){
-                if(city.getCommunityList().contains(CommunityName)){
+                System.out.println("Here "+city.getCityName());
+                if(city.getCommunities().contains(CommunityName)){
+                    System.out.println("Here now");
                     for(j=0; j<communityHistory.commHistory.size();j++){
                         comm = communityHistory.commHistory.get(j);
-                        if(CommunityName.equals(community.getCommName())){
+                        if(CommunityName.equals(comm.getCommName())){
                             fetch = false;
                             comm.append(AptNum);
                             community = comm;

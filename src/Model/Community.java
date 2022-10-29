@@ -57,6 +57,11 @@ public class Community {
     public void setHospList(ArrayList<Hospital> hospList) {
         this.hospList = hospList;
     }
+
+    public void append(String House){
+        String ogList = this.houses;
+        this.houses = ogList + ", "+House;
+    }
     
     
 }

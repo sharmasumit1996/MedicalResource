@@ -4,10 +4,41 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sumit
  */
 public class DoctorDirectory {
+    public ArrayList<Doctor> docHistory;
+
+    public DoctorDirectory (){
+    this.docHistory = new ArrayList<Doctor>();
+    }
+
+    public ArrayList<Doctor> getDocHistory() {
+        return docHistory;
+    }
+
+    public void setDocHistory(ArrayList<Doctor> docHistory) {
+        this.docHistory = docHistory;
+    }
+      
+    public Doctor addNewValue(){
+        Doctor doctor = new Doctor();
+        docHistory.add(doctor);
+        return doctor;
+    }
+    
+    public void updateEncounter(Doctor doctor){
+        int index = docHistory.indexOf(doctor);
+        docHistory.set(index, doctor);
+        
+    }
+    
+    public void deleteEncounter(Doctor doctor){
+        docHistory.remove(doctor);
+    }
     
 }

@@ -14,6 +14,10 @@ public class City {
     private String CityName;
     private String communities;
     public ArrayList<Community> CommunityList;
+    
+    public City(){
+        this.CommunityList = new ArrayList<Community>();
+    }
 
     public String getCityName() {
         return CityName;
@@ -39,5 +43,9 @@ public class City {
         this.CommunityList = CommunityList;
     }
     
+    public void append(String community){
+        String ogList = this.communities;
+        this.communities = ogList + ", "+community;
+    }
     
 }

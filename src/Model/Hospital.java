@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class Hospital {
     private String HospitalName;
-    private String Street;
     private String community;
     private String city;
     private int zipcode;
-    private String perList;
+    private String patList;
+    private String DocList;
     public ArrayList<Doctor> doctor = new ArrayList<Doctor>();
 
     public String getHospitalName() {
@@ -25,14 +25,6 @@ public class Hospital {
 
     public void setHospitalName(String HospitalName) {
         this.HospitalName = HospitalName;
-    }
-
-    public String getStreet() {
-        return Street;
-    }
-
-    public void setStreet(String Street) {
-        this.Street = Street;
     }
 
     public String getCommunity() {
@@ -60,11 +52,11 @@ public class Hospital {
     }
 
     public String getPerList() {
-        return perList;
+        return patList;
     }
 
-    public void setPerList(String perList) {
-        this.perList = perList;
+    public void setPerList(String patList) {
+        this.patList = patList;
     }
 
     public ArrayList<Doctor> getDoctor() {
@@ -74,6 +66,25 @@ public class Hospital {
     public void setDoctor(ArrayList<Doctor> doctor) {
         this.doctor = doctor;
     }
-    
-    
+
+    public String getPatList() {
+        return patList;
+    }
+
+    public void setPatList(String patList) {
+        this.patList = patList;
+    }
+
+    public String getDocList() {
+        return DocList;
+    }
+
+    public void setDocList(String DocList) {
+        this.DocList = DocList;
+    }
+   
+    public void append(String doctor){
+        String ogList = this.DocList;
+        this.DocList = ogList + ", "+doctor;
+    }
 }

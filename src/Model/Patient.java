@@ -14,10 +14,11 @@ public class Patient {
     private String patientID;
     private String name;
     private int age;
-    private String ageGroup;
     private int height;
     private int weight;
     private String gender;
+    private String username;
+    private String password;
     public ArrayList<Encounter> EncounterHistory = new ArrayList<Encounter>();
 
     public String getPatientID() {
@@ -42,14 +43,6 @@ public class Patient {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getAgeGroup() {
-        return ageGroup;
-    }
-
-    public void setAgeGroup(String ageGroup) {
-        this.ageGroup = ageGroup;
     }
 
     public int getHeight() {
@@ -82,6 +75,22 @@ public class Patient {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     @Override

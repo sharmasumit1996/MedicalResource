@@ -75,5 +75,9 @@ public class House {
         this.person = person;
     }
 
+    public void append(String person){
+        String ogList = this.perList;
+        this.perList = ogList + ", "+person;
+    }
     
 }

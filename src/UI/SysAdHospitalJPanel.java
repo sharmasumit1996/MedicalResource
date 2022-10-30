@@ -89,8 +89,18 @@ public class SysAdHospitalJPanel extends javax.swing.JPanel {
         });
 
         Updatebtn.setText("Update");
+        Updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatebtnActionPerformed(evt);
+            }
+        });
 
         Deletebtn.setText("Delete");
+        Deletebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletebtnActionPerformed(evt);
+            }
+        });
 
         HospitalJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,6 +113,11 @@ public class SysAdHospitalJPanel extends javax.swing.JPanel {
                 "Hospital Name", "Community", "City", "ZipCode"
             }
         ));
+        HospitalJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HospitalJTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(HospitalJTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -184,13 +199,80 @@ public class SysAdHospitalJPanel extends javax.swing.JPanel {
                 System.out.println("Null Pointer Exception for House");
             }
             JOptionPane.showMessageDialog(this, "New Hospital Added");
+            HospitalNametxt.setText("");
+            Communitytxt.setText("");
+            CityNametxt.setText("");
+            Ziptxt.setText("");
+            populateTable();
         }
+    }//GEN-LAST:event_SavebtnActionPerformed
+
+    private void HospitalJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HospitalJTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRowIndex = HospitalJTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) HospitalJTable.getModel();
+        HospitalNametxt.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        Communitytxt.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        CityNametxt.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        Ziptxt.setText(model.getValueAt(selectedRowIndex, 3).toString());
+    }//GEN-LAST:event_HospitalJTableMouseClicked
+
+    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = HospitalJTable.getSelectedRow();
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+        if(Updatevalidate(HospitalNametxt.getText(),Communitytxt.getText(),CityNametxt.getText(), Ziptxt.getText())){
+            Hospital hosp = new Hospital();
+            hosp.setHospitalName(HospitalNametxt.getText());
+            hosp.setCommunity(Communitytxt.getText());
+            hosp.setCity(CityNametxt.getText());
+            hosp.setZipcode(Integer.parseInt(Ziptxt.getText()));
+            String HospName = HospitalNametxt.getText();
+            for(Hospital hosp1: hospitalDirectory.getHospitalDirectory()){
+            if (HospName.equals(hosp.getHospitalName())){
+               hospitalDirectory.deleteHospital(hosp1);
+                break;
+            }
+        }
+        Hospital hosp2 = hospitalDirectory.addNewValue();
+        hosp2.setHospitalName(HospitalNametxt.getText());
+        hosp2.setCommunity(Communitytxt.getText());
+        hosp2.setCity(CityNametxt.getText());
+        hosp2.setZipcode(Integer.parseInt(Ziptxt.getText()));
+        JOptionPane.showMessageDialog(this, "Hospital has been Updated");
         HospitalNametxt.setText("");
         Communitytxt.setText("");
         CityNametxt.setText("");
         Ziptxt.setText("");
         populateTable();
-    }//GEN-LAST:event_SavebtnActionPerformed
+        }   
+    }//GEN-LAST:event_UpdatebtnActionPerformed
+
+    private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = HospitalJTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a record to delete","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) HospitalJTable.getModel();
+        String HospName = model.getValueAt(selectedRowIndex, 0).toString();
+        for(Hospital hosp: hospitalDirectory.getHospitalDirectory()){
+            if (HospName.equals(hosp.getHospitalName())){
+                hospitalDirectory.deleteHospital(hosp);
+                break;
+            }
+            HospitalNametxt.setText("");
+            Communitytxt.setText("");
+            CityNametxt.setText("");
+            Ziptxt.setText("");
+            populateTable();
+            JOptionPane.showMessageDialog(this, "Hospital has been deleted!!");    
+        }
+    }//GEN-LAST:event_DeletebtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -239,7 +321,67 @@ private boolean validate(String HospitalName, String CommunityName, String CityN
             }
         }
         for(Hospital hosp: hospitalDirectory.getHospitalDirectory()){
-            if(String.valueOf(hosp.getHospitalName()).equals(HospitalName) && hosp.getCommunity().equals(CommunityName)){
+            if(String.valueOf(hosp.getHospitalName()).equals(HospitalName) && hosp.getCommunity().equals(CommunityName) && hosp.getCity().equals(CityName) && String.valueOf(hosp.getZipcode()).equals(ZIP)){
+                exists = true;
+            }
+        }
+        if(HospitalName.length() == 0){
+            JOptionPane.showMessageDialog(this, "Hospital Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(CityName.length()==0){
+            JOptionPane.showMessageDialog(this, "City Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(CommunityName.length()==0){
+            JOptionPane.showMessageDialog(this, "Community Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(ZIP.length()==0){
+            JOptionPane.showMessageDialog(this, "ZIP cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(fetch){
+            JOptionPane.showMessageDialog(this, "Community doesn't exists in given city, please add community first", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(exists){
+            JOptionPane.showMessageDialog(this, "Apartment already exists in given Community", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+private boolean Updatevalidate(String HospitalName, String CommunityName, String CityName, String ZIP) {
+        //To change body of generated methods, choose Tools | Templates.
+        City city;
+        Community comm;
+        boolean fetch = true, exists = false;
+        int i,j;
+        for(i =0;i<cityHistory.CityHistory.size();i++){
+            city = cityHistory.CityHistory.get(i);
+            if(CityName.equals(city.getCityName())){
+                System.out.println("Here "+city.getCityName());
+                if(city.getCommunities().contains(CommunityName)){
+                    System.out.println("Here now");
+                    for(j=0; j<communityHistory.commHistory.size();j++){
+                        comm = communityHistory.commHistory.get(j);
+                        if(CommunityName.equals(comm.getCommName())){
+                            fetch = false;
+                            comm.append(HospitalName);
+                            community = comm;
+                            break;
+                        }
+                    }
+                    if(j == communityHistory.commHistory.size()){
+                        JOptionPane.showMessageDialog(this, "Community Doesn't exist in given city", "Error", JOptionPane.ERROR_MESSAGE);
+                        return false;
+                    }
+                }
+            }
+        }
+        for(Hospital hosp: hospitalDirectory.getHospitalDirectory()){
+            if(String.valueOf(hosp.getHospitalName()).equals(HospitalName) && hosp.getCommunity().equals(CommunityName) && hosp.getCity().equals(CityName) && String.valueOf(hosp.getZipcode()).equals(ZIP)){
                 exists = true;
             }
         }

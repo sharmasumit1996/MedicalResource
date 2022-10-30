@@ -31,13 +31,13 @@ public class DoctorDirectory {
         return doctor;
     }
     
-    public void updateEncounter(Doctor doctor){
+    public void updateDoctor(Doctor doctor){
         int index = docHistory.indexOf(doctor);
         docHistory.set(index, doctor);
         
     }
     
-    public void deleteEncounter(Doctor doctor){
+    public void deleteDoctor(Doctor doctor){
         docHistory.remove(doctor);
     }
     

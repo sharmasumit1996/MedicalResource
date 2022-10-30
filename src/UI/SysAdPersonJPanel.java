@@ -228,7 +228,47 @@ public class SysAdPersonJPanel extends javax.swing.JPanel {
             PersonNew.setCity(Citytxt.getText());
             house.person.add(PersonNew);
             JOptionPane.showMessageDialog(this, "New Person Added in the house");
+        
+            IDtxt.setText("");
+            Nametxt.setText("");
+            Agetxt.setText("");
+            ApartmentNotxt.setText("");
+            Communitytxt.setText("");
+            Citytxt.setText("");
+            populateTable();
         }
+    }//GEN-LAST:event_SavebtnActionPerformed
+
+    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = PersonJTable.getSelectedRow();
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+        if(Updatevalidate(IDtxt.getText(),Nametxt.getText(), Integer.parseInt(Agetxt.getText()),ApartmentNotxt.getText(),Communitytxt.getText(), Citytxt.getText())){
+            Person pers = new Person();
+            pers.setPersonID(IDtxt.getText());
+            pers.setName(Nametxt.getText());
+            pers.setAge(Integer.parseInt(Agetxt.getText()));
+            pers.setHouse(ApartmentNotxt.getText());
+            pers.setCommunity(Communitytxt.getText());
+            pers.setCity(Citytxt.getText());
+            String PersID = IDtxt.getText();
+            for(Person pers1: personDirectory.getPerHistory()){
+            if (PersID.equals(pers.getPersonID())){
+               personDirectory.deletePerson(pers1);
+                break;
+            }
+        }
+        Person pers2 = personDirectory.addNewValue();
+        pers2.setPersonID(IDtxt.getText());
+        pers2.setName(Nametxt.getText());
+        pers2.setAge(Integer.parseInt(Agetxt.getText()));
+        pers2.setHouse(ApartmentNotxt.getText());
+        pers2.setCommunity(Communitytxt.getText());
+        pers2.setCity(Citytxt.getText());
+        JOptionPane.showMessageDialog(this, "Person has been Updated");
         IDtxt.setText("");
         Nametxt.setText("");
         Agetxt.setText("");
@@ -236,14 +276,32 @@ public class SysAdPersonJPanel extends javax.swing.JPanel {
         Communitytxt.setText("");
         Citytxt.setText("");
         populateTable();
-    }//GEN-LAST:event_SavebtnActionPerformed
-
-    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
-        // TODO add your handling code here:
+        }   
     }//GEN-LAST:event_UpdatebtnActionPerformed
 
     private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = PersonJTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a record to delete","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) PersonJTable.getModel();
+        String PersonID = model.getValueAt(selectedRowIndex, 0).toString();
+        for(Person pers: personDirectory.getPerHistory()){
+            if (PersonID.equals(pers.getPersonID())){
+                personDirectory.deletePerson(pers);
+                break;
+            }
+            IDtxt.setText("");
+            Nametxt.setText("");
+            Agetxt.setText("");
+            ApartmentNotxt.setText("");
+            Communitytxt.setText("");
+            Citytxt.setText("");
+            populateTable();
+            JOptionPane.showMessageDialog(this, "Person has been deleted!!");    
+        }
     }//GEN-LAST:event_DeletebtnActionPerformed
 
     private void PersonJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PersonJTableMouseClicked
@@ -348,4 +406,71 @@ private boolean validate(String ID, String Name, int age, String houses, String 
         return true;
     }
     
+private boolean Updatevalidate(String ID, String Name, int age, String houses, String community, String city){
+    
+        City c1;
+        Community comm;
+        House h1;
+        boolean fetch = true, exists = false;
+        for(int i =0;i<cityHistory.CityHistory.size();i++){
+            c1 = cityHistory.CityHistory.get(i);
+            if(city.equals(c1.getCityName())){
+                if(c1.getCommunities().contains(community)){
+                    for(int j=0; j<communityHistory.commHistory.size();j++){
+                        comm = communityHistory.commHistory.get(j);
+                        if(community.equals(comm.getCommName())){
+                            for(int k=0; k<houseHistory.houseHistory.size();k++){
+                                h1 = houseHistory.houseHistory.get(k);
+                        
+                                if(houses.equals(String.valueOf(h1.getHouseNumber()))){
+                                    fetch  = false;
+                                    h1.append(Name);
+                                    house = h1;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for(Person person: personDirectory.getPerHistory()){
+            if(person.getPersonID().equals(ID) && person.getName().equals(Name) && String.valueOf(person.getAge()).equals(age) && person.getHouse().equals(houses) && person.getCommunity().equals(community) && person.getCity().equals(city)){
+                exists = true;
+            }
+        }
+        if(ID.length() == 0){
+            JOptionPane.showMessageDialog(this, "ID cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Name.length() == 0){
+            JOptionPane.showMessageDialog(this, "Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(age<=0){
+            JOptionPane.showMessageDialog(this, "You have entered an invalid age, Please enter again!!", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(houses.length()==0){
+            JOptionPane.showMessageDialog(this, "House doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(community.length()==0){
+            JOptionPane.showMessageDialog(this, "Community doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(city.length()==0){
+            JOptionPane.showMessageDialog(this, "City doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(fetch){
+            JOptionPane.showMessageDialog(this, "House doesn't exists in given city under provided community, please add house first", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(exists){
+            JOptionPane.showMessageDialog(this, "Person already exists", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
 }

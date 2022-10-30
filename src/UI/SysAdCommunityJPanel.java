@@ -173,11 +173,11 @@ public class SysAdCommunityJPanel extends javax.swing.JPanel {
                 communityhistory.deleteCommunity(comm);
                 break;
             }
+            CommNametxt.setText("");
+            CityNametxt.setText("");
+            JOptionPane.showMessageDialog(this, "Community has been deleted!!");
+            populateTable();
         }
-        CommNametxt.setText("");
-        CityNametxt.setText("");
-        JOptionPane.showMessageDialog(this, "Community has been deleted!!");
-        populateTable();
     }//GEN-LAST:event_DeleteCommbtnActionPerformed
 
     private void SavecommbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavecommbtnActionPerformed

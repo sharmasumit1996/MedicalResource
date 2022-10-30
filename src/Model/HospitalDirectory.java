@@ -31,11 +31,11 @@ public class HospitalDirectory {
         return hospital;
     }
     
-    public void deleteHouse(Hospital hospital){
+    public void deleteHospital(Hospital hospital){
         HospitalDirectory.remove(hospital);
     }
     
-    public void updateHouse(Hospital hospital){
+    public void updateHospital(Hospital hospital){
         int index = HospitalDirectory.indexOf(hospital);
         HospitalDirectory.add(index, hospital);
     }

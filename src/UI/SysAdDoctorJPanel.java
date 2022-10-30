@@ -4,7 +4,6 @@
  */
 package UI;
 
-import Model.City;
 import Model.Doctor;
 import Model.DoctorDirectory;
 import Model.Hospital;
@@ -35,12 +34,14 @@ public class SysAdDoctorJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)DoctorJTable.getModel();
         model.setRowCount(0);
         for(Doctor docs: doctorDirectory.getDocHistory()){
-            Object[] row = new Object[5];
+            Object[] row = new Object[7];
             row[0] = docs.getDoctorID();
             row[1] = docs.getName();
             row[2] = docs.getAge();
             row[3] = docs.getGender();
             row[4] = docs.getHospital();
+            row[5] = docs.getUsername();
+            row[6] = docs.getPassword();
             model.addRow(row);
         }
     }
@@ -110,20 +111,35 @@ public class SysAdDoctorJPanel extends javax.swing.JPanel {
         });
 
         Updatebtn.setText("Update");
+        Updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatebtnActionPerformed(evt);
+            }
+        });
 
         Deletebtn.setText("Delete");
+        Deletebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletebtnActionPerformed(evt);
+            }
+        });
 
         DoctorJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Doctor Name", "Age", "Gender", "Hospital"
+                "ID", "Doctor Name", "Age", "Gender", "Hospital", "Username", "Password"
             }
         ));
+        DoctorJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DoctorJTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(DoctorJTable);
 
         Usernamelbl.setText("Username:");
@@ -247,19 +263,103 @@ public class SysAdDoctorJPanel extends javax.swing.JPanel {
                     hospi.doctor.add(DoctorNew);
                 }
             }
-            JOptionPane.showMessageDialog(this, "New Person Added in the house");
+            JOptionPane.showMessageDialog(this, "New Doctor Added in the hospital");
+            IDtxt.setText("");
+            Nametxt.setText("");
+            Agetxt.setText("");
+            Gendertxt.setText("");
+            Hospitaltxt.setText("");
+            Usernametxt.setText("");
+            Passwordtxt.setText("");
+            populateTable();
         }
-        IDtxt.setText("");
-        Nametxt.setText("");
-        Agetxt.setText("");
-        Gendertxt.setText("");
-        Hospitaltxt.setText("");
-        populateTable();
     }//GEN-LAST:event_SavebtnActionPerformed
 
     private void PasswordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordtxtActionPerformed
+
+    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = DoctorJTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a record to delete","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(Updatevalidate(IDtxt.getText(),Nametxt.getText(), Agetxt.getText(),Gendertxt.getText(),Hospitaltxt.getText(),Usernametxt.getText(),Passwordtxt.getText())){
+            Doctor doc = new Doctor();
+            doc.setDoctorID(IDtxt.getText());
+            doc.setName(Nametxt.getText());
+            doc.setAge(Integer.parseInt(Agetxt.getText()));
+            doc.setGender(Gendertxt.getText());
+            doc.setHospital(Hospitaltxt.getText());
+            doc.setUsername(Usernametxt.getText());
+            doc.setPassword(Passwordtxt.getText());
+            String DoctorID = IDtxt.getText();
+            for(Doctor doc1: doctorDirectory.getDocHistory()){
+            if (DoctorID.equals(doc.getDoctorID())){
+               doctorDirectory.deleteDoctor(doc1);
+                break;
+            }
+        }
+        Doctor doc2 = doctorDirectory.addNewValue();
+        doc2.setDoctorID(IDtxt.getText());
+        doc2.setName(Nametxt.getText());
+        doc2.setAge(Integer.parseInt(Agetxt.getText()));
+        doc2.setGender(Gendertxt.getText());
+        doc2.setHospital(Hospitaltxt.getText());
+        doc2.setUsername(Usernametxt.getText());
+        doc2.setPassword(Passwordtxt.getText());
+        JOptionPane.showMessageDialog(this, "Doctor has been Updated");
+        IDtxt.setText("");
+        Nametxt.setText("");
+        Agetxt.setText("");
+        Gendertxt.setText("");
+        Hospitaltxt.setText("");
+        Usernametxt.setText("");
+        Passwordtxt.setText("");
+        populateTable();
+        }
+    }//GEN-LAST:event_UpdatebtnActionPerformed
+
+    private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = DoctorJTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a record to delete","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) DoctorJTable.getModel();
+        String DoctorID = model.getValueAt(selectedRowIndex, 0).toString();
+        for(Doctor doc: doctorDirectory.getDocHistory()){
+            if (DoctorID.equals(doc.getDoctorID())){
+                doctorDirectory.deleteDoctor(doc);
+                break;
+            }
+            IDtxt.setText("");
+            Nametxt.setText("");
+            Agetxt.setText("");
+            Gendertxt.setText("");
+            Hospitaltxt.setText("");
+            Usernametxt.setText("");
+            Passwordtxt.setText("");
+            JOptionPane.showMessageDialog(this, "Doctor has been deleted!!");
+            populateTable();
+        }
+    }//GEN-LAST:event_DeletebtnActionPerformed
+
+    private void DoctorJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DoctorJTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRowIndex = DoctorJTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) DoctorJTable.getModel();
+        IDtxt.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        Nametxt.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        Agetxt.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        Gendertxt.setText(model.getValueAt(selectedRowIndex, 3).toString());
+        Hospitaltxt.setText(model.getValueAt(selectedRowIndex, 4).toString());
+        Usernametxt.setText(model.getValueAt(selectedRowIndex, 5).toString());
+        Passwordtxt.setText(model.getValueAt(selectedRowIndex, 6).toString());
+    }//GEN-LAST:event_DoctorJTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -346,4 +446,66 @@ private boolean validate(String DoctorID, String name, String Age, String Gender
         }
         return true;
 }
+private boolean Updatevalidate(String DoctorID, String name, String Age, String Gender, String HospitalName,String Username, String Password) {
+        //To change body of generated methods, choose Tools | Templates.
+        Hospital hosp;
+        boolean fetch = true,exists = false;
+        for(int i =0;i<hospitalDirectory.HospitalDirectory.size();i++){
+            hosp = hospitalDirectory.HospitalDirectory.get(i);
+            if(HospitalName.equals(hosp.getHospitalName())){
+                fetch = false;
+                hosp.append(name);
+                break;
+            }
+        }
+        for(Doctor doc: doctorDirectory.getDocHistory()){
+            if(doc.getDoctorID().equals(DoctorID) && doc.getHospital().equals(HospitalName) && doc.getName().equals(name) && String.valueOf(doc.getAge()).equals(Age) && doc.getGender().equals(Gender) && doc.getUsername().equals(Username) && doc.getPassword().equals(Password)){
+                exists = true;
+            }
+        }
+        for(Doctor doc: doctorDirectory.getDocHistory()){
+            if(doc.getUsername().equals(Username)){
+               JOptionPane.showMessageDialog(this, "Username already exists", "Error", JOptionPane.ERROR_MESSAGE);
+               return false;
+            }
+            }
+        if(name.length()==0){
+            JOptionPane.showMessageDialog(this, "Doctor Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(DoctorID.length()==0){
+            JOptionPane.showMessageDialog(this, "Doctor ID cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Age.length()==0){
+            JOptionPane.showMessageDialog(this, "Doctor Age cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Gender.length()==0){
+            JOptionPane.showMessageDialog(this, "Doctor Gender cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Username.length() == 0){
+            JOptionPane.showMessageDialog(this, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Password.length() <=7){
+            JOptionPane.showMessageDialog(this, "Password should be atleast 8 characters long", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(HospitalName.length()==0){
+            JOptionPane.showMessageDialog(this, "Hospital cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(fetch){
+            JOptionPane.showMessageDialog(this, "Hospital doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(exists){
+            JOptionPane.showMessageDialog(this, "Doctor already exists in given Hospital", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+}
+
 }

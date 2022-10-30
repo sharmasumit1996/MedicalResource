@@ -19,6 +19,7 @@ public class Patient {
     private String gender;
     private String username;
     private String password;
+    public String Hospital;
     public ArrayList<Encounter> EncounterHistory = new ArrayList<Encounter>();
 
     public String getPatientID() {
@@ -91,6 +92,14 @@ public class Patient {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getHospital() {
+        return Hospital;
+    }
+
+    public void setHospital(String Hospital) {
+        this.Hospital = Hospital;
     }
     
     @Override

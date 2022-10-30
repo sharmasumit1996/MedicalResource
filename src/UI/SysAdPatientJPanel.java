@@ -34,12 +34,15 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)PatientJTable.getModel();
         model.setRowCount(0);
         for(Patient pats: patientDirectory.getPatHistory()){
-            Object[] row = new Object[5];
+            Object[] row = new Object[8];
             row[0] = pats.getPatientID();
             row[1] = pats.getName();
             row[2] = pats.getAge();
             row[3] = pats.getHeight();
             row[4] = pats.getWeight();
+            row[5] = pats.getUsername();
+            row[6] = pats.getPassword();
+            row[7] = pats.getHospital();
             model.addRow(row);
         }
     }
@@ -72,6 +75,8 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
         Passwordlbl = new javax.swing.JLabel();
         Passwordtxt = new javax.swing.JTextField();
         Usernametxt = new javax.swing.JTextField();
+        HospitalNamelbl = new javax.swing.JLabel();
+        Hospitaltxt = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(720, 640));
 
@@ -81,9 +86,9 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
 
         Agelbl.setText("Age:");
 
-        Heightlbl.setText("Height:");
+        Heightlbl.setText("Height(in cm):");
 
-        Weightlbl.setText("Weight:");
+        Weightlbl.setText("Weight(in kg):");
 
         Nametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,13 +122,13 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
 
         PatientJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Name", "Age", "Height", "Weight"
+                "Patient ID", "Name", "Age", "Height", "Weight", "Username", "Password", "Hospital"
             }
         ));
         PatientJTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,6 +148,8 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        HospitalNamelbl.setText("Hospital:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,14 +165,10 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Usernametxt))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(SavePatientbtn)
-                        .addGap(28, 28, 28)
+                        .addGap(30, 30, 30)
                         .addComponent(UpdatePatientbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DeletePatientbtn))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,16 +177,20 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
                                 .addComponent(Namelbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Agelbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Heightlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Weightlbl, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                            .addComponent(Passwordlbl))
+                                .addComponent(Weightlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Passwordlbl)
+                            .addComponent(Usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(HospitalNamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Heighttxt, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(Agetxt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Nametxt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PatientIDtxt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Weighttxt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Passwordtxt))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Usernametxt)
+                            .addComponent(Heighttxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                            .addComponent(Agetxt)
+                            .addComponent(Nametxt)
+                            .addComponent(PatientIDtxt)
+                            .addComponent(Weighttxt)
+                            .addComponent(Passwordtxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Hospitaltxt))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -218,14 +225,18 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Passwordlbl)
                     .addComponent(Passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(HospitalNamelbl)
+                    .addComponent(Hospitaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SavePatientbtn)
                     .addComponent(UpdatePatientbtn)
                     .addComponent(DeletePatientbtn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,33 +246,98 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
 
     private void SavePatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavePatientbtnActionPerformed
         // TODO add your handling code here:
-        if(validate(PatientIDtxt.getText(),Nametxt.getText(),Agetxt.getText(),Heighttxt.getText(),Weighttxt.getText(),Usernametxt.getText(),Passwordtxt.getText())){
+        if(validate(PatientIDtxt.getText(),Nametxt.getText(),Agetxt.getText(),Heighttxt.getText(),Weighttxt.getText(),Usernametxt.getText(),Passwordtxt.getText(),Hospitaltxt.getText())){
             Patient PatientNew = patientDirectory.addNewValue();
             PatientNew.setPatientID(PatientIDtxt.getText());
             PatientNew.setName(Nametxt.getText());
             PatientNew.setAge(Integer.parseInt(Agetxt.getText()));
             PatientNew.setHeight(Integer.parseInt(Heighttxt.getText()));
             PatientNew.setWeight(Integer.parseInt(Weighttxt.getText()));
-            int age = Integer.parseInt(Agetxt.getText());
             PatientNew.setUsername(Usernametxt.getText());
             PatientNew.setPassword(Passwordtxt.getText());
+            PatientNew.setHospital(Passwordtxt.getText());
             personCurrent.setPatient(PatientNew);
             JOptionPane.showMessageDialog(this, "New Patient Added");
+            PatientIDtxt.setText("");
+            Nametxt.setText("");
+            Agetxt.setText("");
+            Heighttxt.setText("");
+            Weighttxt.setText("");
+            Usernametxt.setText("");
+            Passwordtxt.setText("");
+            Hospitaltxt.setText("");
+            populateTable();
         }
+    }//GEN-LAST:event_SavePatientbtnActionPerformed
+
+    private void UpdatePatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatePatientbtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = PatientJTable.getSelectedRow();
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+        if(Updatevalidate(PatientIDtxt.getText(),Nametxt.getText(),Agetxt.getText(),Heighttxt.getText(),Weighttxt.getText(),Usernametxt.getText(),Passwordtxt.getText(),Hospitaltxt.getText())){
+            Patient pat = new Patient();
+            pat.setPatientID(PatientIDtxt.getText());
+            pat.setName(Nametxt.getText());
+            pat.setAge(Integer.parseInt(Agetxt.getText()));
+            pat.setHeight(Integer.parseInt(Heighttxt.getText()));
+            pat.setWeight(Integer.parseInt(Weighttxt.getText()));
+            pat.setUsername(Usernametxt.getText());
+            pat.setPassword(Passwordtxt.getText());
+            pat.setHospital(Passwordtxt.getText());
+            String PatientID = PatientIDtxt.getText();
+            for(Patient pat1: patientDirectory.getPatHistory()){
+            if (PatientID.equals(pat.getPatientID())){
+               patientDirectory.deletePatient(pat1);
+                break;
+            }
+        }
+        Patient pat2 = patientDirectory.addNewValue();
+        pat2.setPatientID(PatientIDtxt.getText());
+        pat2.setName(Nametxt.getText());
+        pat2.setAge(Integer.parseInt(Agetxt.getText()));
+        pat2.setHeight(Integer.parseInt(Heighttxt.getText()));
+        pat2.setWeight(Integer.parseInt(Weighttxt.getText()));
+        pat2.setUsername(Usernametxt.getText());
+        pat2.setPassword(Passwordtxt.getText());
+        pat2.setHospital(Passwordtxt.getText());
+        JOptionPane.showMessageDialog(this, "Patient has been Updated");
         PatientIDtxt.setText("");
         Nametxt.setText("");
         Agetxt.setText("");
         Heighttxt.setText("");
         Weighttxt.setText("");
+        Usernametxt.setText("");
+        Passwordtxt.setText("");
+        Hospitaltxt.setText("");
         populateTable();
-    }//GEN-LAST:event_SavePatientbtnActionPerformed
-
-    private void UpdatePatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatePatientbtnActionPerformed
-        // TODO add your handling code here:
+        }                        
     }//GEN-LAST:event_UpdatePatientbtnActionPerformed
 
     private void DeletePatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePatientbtnActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = HouseJTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a record to delete","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) HouseJTable.getModel();
+        String HouseNum = model.getValueAt(selectedRowIndex, 0).toString();
+        for(House hous: houseHistory.getHouseHistory()){
+            if (HouseNum.equals(hous.getHouseNumber())){
+                houseHistory.deleteHouse(hous);
+                break;
+            }
+            ApartmentNotxt.setText("");
+            Citytxt.setText("");
+            Communitytxt.setText("");
+            StreetNotxt.setText("");
+            Ziptxt.setText("");
+            populateTable();
+            JOptionPane.showMessageDialog(this, "House has been deleted!!");    
+        }
     }//GEN-LAST:event_DeletePatientbtnActionPerformed
 
     private void PatientJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PatientJTableMouseClicked
@@ -273,6 +349,9 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
         Agetxt.setText(model.getValueAt(selectedRowIndex, 2).toString());
         Heighttxt.setText(model.getValueAt(selectedRowIndex, 3).toString());
         Weighttxt.setText(model.getValueAt(selectedRowIndex, 4).toString());
+        Usernametxt.setText(model.getValueAt(selectedRowIndex, 5).toString());
+        Passwordtxt.setText(model.getValueAt(selectedRowIndex, 6).toString());
+        Hospitaltxt.setText(model.getValueAt(selectedRowIndex, 7).toString());
     }//GEN-LAST:event_PatientJTableMouseClicked
 
     private void PasswordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordtxtActionPerformed
@@ -286,6 +365,8 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
     private javax.swing.JButton DeletePatientbtn;
     private javax.swing.JLabel Heightlbl;
     private javax.swing.JTextField Heighttxt;
+    private javax.swing.JLabel HospitalNamelbl;
+    private javax.swing.JTextField Hospitaltxt;
     private javax.swing.JLabel Namelbl;
     private javax.swing.JTextField Nametxt;
     private javax.swing.JLabel Passwordlbl;
@@ -303,7 +384,7 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-private boolean validate(String ID, String Name, String Age, String Height, String Weight,String Username, String Password) {
+private boolean validate(String ID, String Name, String Age, String Height, String Weight,String Username, String Password, String Hospital) {
         //To change body of generated methods, choose Tools | Templates.
         Person per;
         boolean fetch = true, exists = false;
@@ -352,6 +433,75 @@ private boolean validate(String ID, String Name, String Age, String Height, Stri
         }
         if(Password.length() <=7){
             JOptionPane.showMessageDialog(this, "Password should be atleast 8 characters long", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Hospital.length() == 0){
+            JOptionPane.showMessageDialog(this, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(fetch){
+            JOptionPane.showMessageDialog(this, "Person doesn't exists, please add person first", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(exists){
+            JOptionPane.showMessageDialog(this, "Patient already exists", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    private boolean Updatevalidate(String ID, String Name, String Age, String Height, String Weight,String Username, String Password, String Hospital) {
+        //To change body of generated methods, choose Tools | Templates.
+        Person per;
+        boolean fetch = true, exists = false;
+        for(int i=0; i<personDirectory.perHistory.size();i++){
+            per = personDirectory.perHistory.get(i);
+            if(ID.equals(String.valueOf(per.getPersonID())) && Name.equals(per.getName())){
+                fetch = false;
+                personCurrent = per;
+                break;
+            }
+        }
+        for(Patient patient: patientDirectory.getPatHistory()){
+            if(patient.getPatientID().equals(ID) && patient.getName().equals(Name) && String.valueOf(patient.getAge()).equals(Age) && String.valueOf(patient.getHeight()).equals(Height)&& String.valueOf(patient.getWeight()).equals(Weight) && patient.getUsername().equals(Username) && patient.getPassword().equals(Password)){
+                exists =true;
+            }
+        }
+        for(Patient patient: patientDirectory.getPatHistory()){
+            if(patient.getUsername().equals(Username)){
+               JOptionPane.showMessageDialog(this, "Username already exists", "Error", JOptionPane.ERROR_MESSAGE);
+               return false;
+            }
+            }
+        if(ID.length() == 0){
+            JOptionPane.showMessageDialog(this, "ID cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Name.length() == 0){
+            JOptionPane.showMessageDialog(this, "Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Integer.parseInt(Age) == 0){
+            JOptionPane.showMessageDialog(this, "Please enter a valid Age", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Integer.parseInt(Height) == 0){
+            JOptionPane.showMessageDialog(this, "Please enter a valid Height", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Integer.parseInt(Weight) == 0){
+            JOptionPane.showMessageDialog(this, "Please enter a valid Weight", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Username.length() == 0){
+            JOptionPane.showMessageDialog(this, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Password.length() <=7){
+            JOptionPane.showMessageDialog(this, "Password should be atleast 8 characters long", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Hospital.length() == 0){
+            JOptionPane.showMessageDialog(this, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if(fetch){

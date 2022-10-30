@@ -168,9 +168,10 @@ public class SysAdCityJPanel extends javax.swing.JPanel {
             newCity.setCityName(CityNametxt.getText());
             
             JOptionPane.showMessageDialog(this, "New City Added");
+        
+            CityNametxt.setText("");
+            populateTable();
         }
-        CityNametxt.setText("");
-        populateTable();
     }//GEN-LAST:event_SaveCitybtnActionPerformed
 
     private void UpdateCitybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCitybtnActionPerformed
@@ -183,7 +184,6 @@ public class SysAdCityJPanel extends javax.swing.JPanel {
         if(validate(CityNametxt.getText())){
             City city = new City();
             city.setCityName(CityNametxt.getText());
-            //cityhistory.updateCity(city);
             String CityName = CityNametxt.getText();
             for(City city1: cityhistory.getCityHistory()){
             if (CityName.equals(city.getCityName())){

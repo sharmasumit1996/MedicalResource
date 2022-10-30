@@ -94,6 +94,11 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
         });
 
         Updatebtn.setText("Update");
+        Updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatebtnActionPerformed(evt);
+            }
+        });
 
         Deletebtn.setText("Delete");
         Deletebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -204,18 +209,38 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
                 System.out.println("Null Pointer Exception for House");
             }
             JOptionPane.showMessageDialog(this, "New House Added");
+        
+            ApartmentNotxt.setText("");
+            Citytxt.setText("");
+            Communitytxt.setText("");
+            StreetNotxt.setText("");
+            Ziptxt.setText("");
+            populateTable();
         }
-        ApartmentNotxt.setText("");
-        Citytxt.setText("");
-        Communitytxt.setText("");
-        StreetNotxt.setText("");
-        Ziptxt.setText("");
-        populateTable();
     }//GEN-LAST:event_SavebtnActionPerformed
 
     private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
         // TODO add your handling code here:
-        
+        int selectedRowIndex = HouseJTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a record to delete","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) HouseJTable.getModel();
+        String HouseNum = model.getValueAt(selectedRowIndex, 0).toString();
+        for(House hous: houseHistory.getHouseHistory()){
+            if (HouseNum.equals(hous.getHouseNumber())){
+                houseHistory.deleteHouse(hous);
+                break;
+            }
+            ApartmentNotxt.setText("");
+            Citytxt.setText("");
+            Communitytxt.setText("");
+            StreetNotxt.setText("");
+            Ziptxt.setText("");
+            populateTable();
+            JOptionPane.showMessageDialog(this, "House has been deleted!!");    
+        }
     }//GEN-LAST:event_DeletebtnActionPerformed
 
     private void HouseJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HouseJTableMouseClicked
@@ -227,6 +252,43 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
         Citytxt.setText(model.getValueAt(selectedRowIndex, 2).toString());
         Ziptxt.setText(model.getValueAt(selectedRowIndex, 3).toString());
     }//GEN-LAST:event_HouseJTableMouseClicked
+
+    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = HouseJTable.getSelectedRow();
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+        if(Updatevalidate(ApartmentNotxt.getText(),Citytxt.getText(),Communitytxt.getText(), StreetNotxt.getText(),Ziptxt.getText())){
+            House hous = new House();
+            hous.setHouseNumber(Integer.parseInt(ApartmentNotxt.getText()));
+            hous.setStreet(StreetNotxt.getText());
+            hous.setCity(Citytxt.getText());
+            hous.setZipcode(Integer.parseInt(Ziptxt.getText()));
+            hous.setCommunity(Communitytxt.getText());
+            String HouseNum = ApartmentNotxt.getText();
+            for(House hous1: houseHistory.getHouseHistory()){
+            if (HouseNum.equals(hous.getHouseNumber())){
+               houseHistory.deleteHouse(hous1);
+                break;
+            }
+        }
+        House hous2 = houseHistory.addNewValue();
+        hous2.setHouseNumber(Integer.parseInt(ApartmentNotxt.getText()));
+        hous2.setStreet(StreetNotxt.getText());
+        hous2.setCity(Citytxt.getText());
+        hous2.setZipcode(Integer.parseInt(Ziptxt.getText()));
+        hous2.setCommunity(Communitytxt.getText());
+        JOptionPane.showMessageDialog(this, "House has been Updated");
+        ApartmentNotxt.setText("");
+        Citytxt.setText("");
+        Communitytxt.setText("");
+        StreetNotxt.setText("");
+        Ziptxt.setText("");
+        populateTable();
+        }                                    
+    }//GEN-LAST:event_UpdatebtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -277,7 +339,71 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
             }
         }
         for(House house: houseHistory.getHouseHistory()){
-            if(String.valueOf(house.getHouseNumber()).equals(AptNum) && house.getCommunity().equals(CommunityName)){
+            if(String.valueOf(house.getHouseNumber()).equals(AptNum) && house.getStreet().equals(StreetNum) && house.getCommunity().equals(CommunityName) && house.getCity().equals(CityName)){
+                exists = true;
+            }
+        }
+        if(AptNum.length() == 0){
+            JOptionPane.showMessageDialog(this, "Apartment Number cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(CityName.length()==0){
+            JOptionPane.showMessageDialog(this, "City Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(CommunityName.length()==0){
+            JOptionPane.showMessageDialog(this, "Community Name cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(StreetNum.length()==0){
+            JOptionPane.showMessageDialog(this, "Street Number cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(ZIP.length()==0){
+            JOptionPane.showMessageDialog(this, "ZIP cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(fetch){
+            JOptionPane.showMessageDialog(this, "Community doesn't exists in given city, please add community first", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(exists){
+            JOptionPane.showMessageDialog(this, "Apartment already exists in given Community", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean Updatevalidate(String AptNum, String CityName, String CommunityName, String StreetNum, String ZIP) {
+        //To change body of generated methods, choose Tools | Templates.
+        City city;
+        Community comm;
+        boolean fetch = true, exists = false;
+        int i,j;
+        for(i =0;i<cityHistory.CityHistory.size();i++){
+            city = cityHistory.CityHistory.get(i);
+            if(CityName.equals(city.getCityName())){
+                System.out.println("Here "+city.getCityName());
+                if(city.getCommunities().contains(CommunityName)){
+                    System.out.println("Here now");
+                    for(j=0; j<communityHistory.commHistory.size();j++){
+                        comm = communityHistory.commHistory.get(j);
+                        if(CommunityName.equals(comm.getCommName())){
+                            fetch = false;
+                            comm.append(AptNum);
+                            community = comm;
+                            break;
+                        }
+                    }
+                    if(j == communityHistory.commHistory.size()){
+                        JOptionPane.showMessageDialog(this, "Community Doesn't exist in given city", "Error", JOptionPane.ERROR_MESSAGE);
+                        return false;
+                    }
+                }
+            }
+        }
+        for(House house: houseHistory.getHouseHistory()){
+            if(String.valueOf(house.getHouseNumber()).equals(AptNum) && house.getStreet().equals(StreetNum) && house.getCommunity().equals(CommunityName) && house.getCity().equals(CityName) && String.valueOf(house.getZipcode()).equals(ZIP)){
                 exists = true;
             }
         }

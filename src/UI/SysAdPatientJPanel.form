@@ -154,17 +154,30 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PatientIDtxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PatientIDtxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Nametxt">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NametxtActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NametxtKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Agetxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AgetxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Heighttxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="HeighttxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Weighttxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="WeighttxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="SavePatientbtn">
       <Properties>
@@ -296,6 +309,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Hospitaltxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="HospitaltxtKeyPressed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

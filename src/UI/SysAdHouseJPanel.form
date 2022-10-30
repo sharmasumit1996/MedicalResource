@@ -130,14 +130,29 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ApartmentNotxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ApartmentNotxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="StreetNotxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="StreetNotxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Citytxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CitytxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Ziptxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ZiptxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Communitytxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CommunitytxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Savebtn">
       <Properties>

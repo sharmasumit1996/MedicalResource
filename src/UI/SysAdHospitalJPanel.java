@@ -81,6 +81,30 @@ public class SysAdHospitalJPanel extends javax.swing.JPanel {
 
         Ziplbl.setText("ZipCode:");
 
+        HospitalNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HospitalNametxtKeyPressed(evt);
+            }
+        });
+
+        Communitytxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CommunitytxtKeyPressed(evt);
+            }
+        });
+
+        CityNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CityNametxtKeyPressed(evt);
+            }
+        });
+
+        Ziptxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ZiptxtKeyPressed(evt);
+            }
+        });
+
         Savebtn.setText("Save");
         Savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +297,50 @@ public class SysAdHospitalJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Hospital has been deleted!!");    
         }
     }//GEN-LAST:event_DeletebtnActionPerformed
+
+    private void HospitalNametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HospitalNametxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            HospitalNametxt.setEditable(true);  
+        }
+        else {
+            HospitalNametxt.setEditable(false); }
+    }//GEN-LAST:event_HospitalNametxtKeyPressed
+
+    private void CommunitytxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommunitytxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Communitytxt.setEditable(true);  
+        }
+        else {
+            Communitytxt.setEditable(false); }
+    }//GEN-LAST:event_CommunitytxtKeyPressed
+
+    private void CityNametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CityNametxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            CityNametxt.setEditable(true);  
+        }
+        else {
+            CityNametxt.setEditable(false); }
+    }//GEN-LAST:event_CityNametxtKeyPressed
+
+    private void ZiptxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ZiptxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Ziptxt.setEditable(false);  
+        }
+        else {
+            Ziptxt.setEditable(true); }
+    }//GEN-LAST:event_ZiptxtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

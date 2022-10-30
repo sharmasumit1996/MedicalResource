@@ -58,6 +58,12 @@ public class SysAdCityJPanel extends javax.swing.JPanel {
 
         CityNamelbl.setText("City Name:");
 
+        CityNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CityNametxtKeyPressed(evt);
+            }
+        });
+
         SaveCitybtn.setText("Save");
         SaveCitybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +212,17 @@ public class SysAdCityJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) CityJTable.getModel();
         CityNametxt.setText(model.getValueAt(selectedRowIndex, 0).toString());
     }//GEN-LAST:event_CityJTableMouseClicked
+
+    private void CityNametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CityNametxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            CityNametxt.setEditable(true);  
+        }
+        else {
+            CityNametxt.setEditable(false); }
+    }//GEN-LAST:event_CityNametxtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

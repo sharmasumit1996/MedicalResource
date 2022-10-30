@@ -97,8 +97,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="CommNametxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CommNametxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="CityNametxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CityNametxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Savecommbtn">
       <Properties>

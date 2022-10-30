@@ -90,9 +90,38 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
 
         Weightlbl.setText("Weight(in kg):");
 
+        PatientIDtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PatientIDtxtKeyPressed(evt);
+            }
+        });
+
         Nametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NametxtActionPerformed(evt);
+            }
+        });
+        Nametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NametxtKeyPressed(evt);
+            }
+        });
+
+        Agetxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AgetxtKeyPressed(evt);
+            }
+        });
+
+        Heighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HeighttxtKeyPressed(evt);
+            }
+        });
+
+        Weighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                WeighttxtKeyPressed(evt);
             }
         });
 
@@ -149,6 +178,12 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
         });
 
         HospitalNamelbl.setText("Hospital:");
+
+        Hospitaltxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HospitaltxtKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -318,25 +353,28 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
 
     private void DeletePatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePatientbtnActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = HouseJTable.getSelectedRow();
+        int selectedRowIndex = PatientJTable.getSelectedRow();
         if(selectedRowIndex < 0){
             JOptionPane.showMessageDialog(this, "Please select a record to delete","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-        DefaultTableModel model = (DefaultTableModel) HouseJTable.getModel();
-        String HouseNum = model.getValueAt(selectedRowIndex, 0).toString();
-        for(House hous: houseHistory.getHouseHistory()){
-            if (HouseNum.equals(hous.getHouseNumber())){
-                houseHistory.deleteHouse(hous);
+        DefaultTableModel model = (DefaultTableModel) PatientJTable.getModel();
+        String PatientID = model.getValueAt(selectedRowIndex, 0).toString();
+        for(Patient pat: patientDirectory.getPatHistory()){
+            if (PatientID.equals(pat.getPatientID())){
+                patientDirectory.deletePatient(pat);
                 break;
             }
-            ApartmentNotxt.setText("");
-            Citytxt.setText("");
-            Communitytxt.setText("");
-            StreetNotxt.setText("");
-            Ziptxt.setText("");
+            PatientIDtxt.setText("");
+            Nametxt.setText("");
+            Agetxt.setText("");
+            Heighttxt.setText("");
+            Weighttxt.setText("");
+            Usernametxt.setText("");
+            Passwordtxt.setText("");
+            Hospitaltxt.setText("");
             populateTable();
-            JOptionPane.showMessageDialog(this, "House has been deleted!!");    
+            JOptionPane.showMessageDialog(this, "Patient has been deleted!!");    
         }
     }//GEN-LAST:event_DeletePatientbtnActionPerformed
 
@@ -357,6 +395,72 @@ public class SysAdPatientJPanel extends javax.swing.JPanel {
     private void PasswordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordtxtActionPerformed
+
+    private void PatientIDtxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PatientIDtxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            PatientIDtxt.setEditable(false);  
+        }
+        else {
+            PatientIDtxt.setEditable(true); }
+    }//GEN-LAST:event_PatientIDtxtKeyPressed
+
+    private void NametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NametxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Nametxt.setEditable(true);  
+        }
+        else {
+            Nametxt.setEditable(false); }
+    }//GEN-LAST:event_NametxtKeyPressed
+
+    private void AgetxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AgetxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Agetxt.setEditable(false);  
+        }
+        else {
+            Agetxt.setEditable(true); }
+    }//GEN-LAST:event_AgetxtKeyPressed
+
+    private void HeighttxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HeighttxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Heighttxt.setEditable(false);  
+        }
+        else {
+            Heighttxt.setEditable(true); }
+    }//GEN-LAST:event_HeighttxtKeyPressed
+
+    private void WeighttxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WeighttxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Weighttxt.setEditable(false);  
+        }
+        else {
+            Weighttxt.setEditable(true); }
+    }//GEN-LAST:event_WeighttxtKeyPressed
+
+    private void HospitaltxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HospitaltxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Hospitaltxt.setEditable(true);  
+        }
+        else {
+            Hospitaltxt.setEditable(false); }
+    }//GEN-LAST:event_HospitaltxtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -160,19 +160,30 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="IDtxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IDtxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Nametxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NametxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Agetxt">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgetxtActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AgetxtKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Gendertxt">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GendertxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Hospitaltxt">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HospitaltxtActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="HospitaltxtKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Savebtn">

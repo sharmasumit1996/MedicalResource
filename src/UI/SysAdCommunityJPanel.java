@@ -67,6 +67,18 @@ public class SysAdCommunityJPanel extends javax.swing.JPanel {
 
         CityNamelbl.setText("City Name:");
 
+        CommNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CommNametxtKeyPressed(evt);
+            }
+        });
+
+        CityNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CityNametxtKeyPressed(evt);
+            }
+        });
+
         Savecommbtn.setText("Save");
         Savecommbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,6 +246,28 @@ public class SysAdCommunityJPanel extends javax.swing.JPanel {
         populateTable();
         }
     }//GEN-LAST:event_UpdateCommbtnActionPerformed
+
+    private void CommNametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommNametxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            CommNametxt.setEditable(true);  
+        }
+        else {
+            CommNametxt.setEditable(false); }
+    }//GEN-LAST:event_CommNametxtKeyPressed
+
+    private void CityNametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CityNametxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            CityNametxt.setEditable(true);  
+        }
+        else {
+            CityNametxt.setEditable(false); }
+    }//GEN-LAST:event_CityNametxtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

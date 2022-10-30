@@ -9,18 +9,19 @@ package Model;
  * @author sumit
  */
 public class Vitals {
-    private String PatientID;
+    private int EncounterNumber;
+    private String PatientName;
     private int bloodPressure;
     private int temperature;
     private int pulse;
-    private String DoctorID;
+    private String DoctorName;
 
-    public String getPatientID() {
-        return PatientID;
+    public String getPatientName() {
+        return PatientName;
     }
 
-    public void setPatientID(String PatientID) {
-        this.PatientID = PatientID;
+    public void setPatientName(String PatientName) {
+        this.PatientName = PatientName;
     }
 
     public int getBloodPressure() {
@@ -47,14 +48,20 @@ public class Vitals {
         this.pulse = pulse;
     }
 
-    public String getDoctorID() {
-        return DoctorID;
+    public String getDoctorName() {
+        return DoctorName;
     }
 
-    public void setDoctorID(String DoctorID) {
-        this.DoctorID = DoctorID;
+    public void setDoctorName(String DoctorName) {
+        this.DoctorName = DoctorName;
+    }    
+
+    public int getEncounterNumber() {
+        return EncounterNumber;
     }
-    
-    
+
+    public void setEncounterNumber(int EncounterNumber) {
+        this.EncounterNumber = EncounterNumber;
+    }
     
 }

@@ -243,7 +243,7 @@ public class SysAdminJFrame extends javax.swing.JFrame {
 
     private void VitalsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VitalsbtnActionPerformed
         // TODO add your handling code here:
-        VitalsJPanel vitalscud = new VitalsJPanel(patientDirectory, encounterHistory);
+        SysAdVitalsJPanel vitalscud = new SysAdVitalsJPanel(patientDirectory, encounterHistory, doctorDirectory);
         jSplitPane.setRightComponent(vitalscud);
     }//GEN-LAST:event_VitalsbtnActionPerformed
 

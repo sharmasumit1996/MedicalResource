@@ -86,6 +86,36 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Community:");
 
+        ApartmentNotxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ApartmentNotxtKeyPressed(evt);
+            }
+        });
+
+        StreetNotxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                StreetNotxtKeyPressed(evt);
+            }
+        });
+
+        Citytxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CitytxtKeyPressed(evt);
+            }
+        });
+
+        Ziptxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ZiptxtKeyPressed(evt);
+            }
+        });
+
+        Communitytxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CommunitytxtKeyPressed(evt);
+            }
+        });
+
         Savebtn.setText("Save");
         Savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,6 +320,61 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
         }                                    
     }//GEN-LAST:event_UpdatebtnActionPerformed
 
+    private void ApartmentNotxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApartmentNotxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            ApartmentNotxt.setEditable(false);  
+        }
+        else {
+            ApartmentNotxt.setEditable(true); }
+    }//GEN-LAST:event_ApartmentNotxtKeyPressed
+
+    private void StreetNotxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StreetNotxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            StreetNotxt.setEditable(true);  
+        }
+        else {
+            StreetNotxt.setEditable(false); }
+    }//GEN-LAST:event_StreetNotxtKeyPressed
+
+    private void CitytxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CitytxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Citytxt.setEditable(true);  
+        }
+        else {
+            Citytxt.setEditable(false); }
+    }//GEN-LAST:event_CitytxtKeyPressed
+
+    private void ZiptxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ZiptxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Ziptxt.setEditable(false);  
+        }
+        else {
+            Ziptxt.setEditable(true); }
+    }//GEN-LAST:event_ZiptxtKeyPressed
+
+    private void CommunitytxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommunitytxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Communitytxt.setEditable(true);  
+        }
+        else {
+            Communitytxt.setEditable(false); }
+    }//GEN-LAST:event_CommunitytxtKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApartmentNotxt;
@@ -319,9 +404,7 @@ public class SysAdHouseJPanel extends javax.swing.JPanel {
         for(i =0;i<cityHistory.CityHistory.size();i++){
             city = cityHistory.CityHistory.get(i);
             if(CityName.equals(city.getCityName())){
-                System.out.println("Here "+city.getCityName());
                 if(city.getCommunities().contains(CommunityName)){
-                    System.out.println("Here now");
                     for(j=0; j<communityHistory.commHistory.size();j++){
                         comm = communityHistory.commHistory.get(j);
                         if(CommunityName.equals(comm.getCommName())){

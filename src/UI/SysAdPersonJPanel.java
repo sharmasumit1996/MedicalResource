@@ -96,6 +96,42 @@ public class SysAdPersonJPanel extends javax.swing.JPanel {
         Personlbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Personlbl.setText("PERSON");
 
+        IDtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IDtxtKeyPressed(evt);
+            }
+        });
+
+        Nametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NametxtKeyPressed(evt);
+            }
+        });
+
+        Agetxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AgetxtKeyPressed(evt);
+            }
+        });
+
+        ApartmentNotxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ApartmentNotxtKeyPressed(evt);
+            }
+        });
+
+        Communitytxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CommunitytxtKeyPressed(evt);
+            }
+        });
+
+        Citytxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CitytxtKeyPressed(evt);
+            }
+        });
+
         Savebtn.setText("Save");
         Savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,6 +351,73 @@ public class SysAdPersonJPanel extends javax.swing.JPanel {
         Communitytxt.setText(model.getValueAt(selectedRowIndex, 4).toString());
         Citytxt.setText(model.getValueAt(selectedRowIndex, 5).toString());
     }//GEN-LAST:event_PersonJTableMouseClicked
+
+    private void IDtxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDtxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            IDtxt.setEditable(false);  
+        }
+        else {
+            IDtxt.setEditable(true); }
+    }//GEN-LAST:event_IDtxtKeyPressed
+
+    private void AgetxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AgetxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Agetxt.setEditable(false);  
+        }
+        else {
+            Agetxt.setEditable(true); }
+    }//GEN-LAST:event_AgetxtKeyPressed
+
+    private void ApartmentNotxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApartmentNotxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            ApartmentNotxt.setEditable(false);  
+        }
+        else {
+            ApartmentNotxt.setEditable(true); }
+
+    }//GEN-LAST:event_ApartmentNotxtKeyPressed
+
+    private void NametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NametxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Nametxt.setEditable(true);  
+        }
+        else {
+            Nametxt.setEditable(false); }
+    }//GEN-LAST:event_NametxtKeyPressed
+
+    private void CommunitytxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommunitytxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Communitytxt.setEditable(true);  
+        }
+        else {
+            Communitytxt.setEditable(false); }
+    }//GEN-LAST:event_CommunitytxtKeyPressed
+
+    private void CitytxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CitytxtKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch))
+        {
+            Citytxt.setEditable(true);  
+        }
+        else {
+            Citytxt.setEditable(false); }
+    }//GEN-LAST:event_CitytxtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

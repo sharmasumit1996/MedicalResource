@@ -79,7 +79,9 @@ public class VitalsJPanel extends javax.swing.JPanel {
         Deletebtn = new javax.swing.JButton();
 
         Vitalslbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Vitalslbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Vitalslbl.setText("Vitals");
+        Vitalslbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         PatientIDlbl.setText("Patient Name:");
 
@@ -137,50 +139,40 @@ public class VitalsJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(312, 312, 312)
-                                .addComponent(Vitalslbl))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(Pulselbl, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Pulsetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Doctorlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Savebtn))
+                        .addComponent(Pulselbl, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Updatebtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(Deletebtn))
-                            .addComponent(Doctortxt, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Temperaturelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BloodPressurelbl)
-                            .addComponent(PatientIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PatientIDtxt)
-                            .addComponent(BloodPressuretxt)
-                            .addComponent(Temperaturetxt)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PatientIDlbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(EncounterNumbertxt)))
+                        .addComponent(Pulsetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Doctorlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Savebtn))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Updatebtn)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Deletebtn))
+                                .addComponent(Doctortxt, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Temperaturelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BloodPressurelbl)
+                                .addComponent(PatientIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(PatientIDtxt)
+                                .addComponent(BloodPressuretxt)
+                                .addComponent(Temperaturetxt)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(PatientIDlbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(21, 21, 21)
+                            .addComponent(EncounterNumbertxt)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Vitalslbl))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -405,7 +397,7 @@ public class VitalsJPanel extends javax.swing.JPanel {
         //To change body of generated methods, choose Tools | Templates.
         Patient pat;
         Doctor doc;
-        boolean fetch = true, exists = true, fetch1 = true;
+        boolean fetch = true, exists = false, fetch1 = true;
         for(int i=0; i<patientDirectory.patHistory.size();i++){
             pat = patientDirectory.patHistory.get(i);
             if(PatientName.equals(String.valueOf(pat.getName()))){
@@ -424,7 +416,7 @@ public class VitalsJPanel extends javax.swing.JPanel {
         for(Encounter encounter: encounterHistory.getEncHistory()){
             Vitals vitals = encounter.getVitals();
             if(String.valueOf(vitals.getPatientName()).equals(PatientName) && String.valueOf(vitals.getTemperature()).equals(Temperature) && String.valueOf(vitals.getBloodPressure()).equals(BP) && String.valueOf(vitals.getPulse()).equals(Pulse)&& vitals.getDoctorName().equals(Doctor)){
-                exists = false;
+                exists = true;
             }
         }
         if(PatientName.length() == 0){

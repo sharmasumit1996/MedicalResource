@@ -4,13 +4,19 @@
  */
 package UI;
 
+import Model.AppointmentHistory;
+import Model.CityHistory;
+import Model.CommunityHistory;
 import Model.Doctor;
 import Model.DoctorDirectory;
+import Model.EncounterHistory;
+import Model.HospitalDirectory;
+import Model.HouseHistory;
 import Model.Patient;
 import Model.PatientDirectory;
+import Model.PersonDirectory;
+import Model.Vitals;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 
 /**
  *
@@ -21,19 +27,30 @@ public class HomeJFrame extends javax.swing.JFrame {
     /**
      * Creates new form HomeJFrame
      */
+    PersonDirectory personDirectory;
     PatientDirectory patientDirectory;
+    CityHistory cityHistory;
+    CommunityHistory communityHistory;
+    HouseHistory houseHistory;
+    EncounterHistory encounterHistory;
     DoctorDirectory doctorDirectory;
-    Patient patient;
-    public JSplitPane jSplitMainPane;
-    public JPanel jPanelMainLeft;
-    public JPanel jPanelMainRight;
+    HospitalDirectory hospitalDirectory;
+    AppointmentHistory appointmentHistory;
+    Vitals vitals;
     public HomeJFrame() {
         initComponents();
         patientDirectory = new PatientDirectory();
         doctorDirectory = new DoctorDirectory();
-        patient = new Patient();
+        personDirectory = new PersonDirectory();
+        cityHistory = new CityHistory();
+        communityHistory = new CommunityHistory();
+        houseHistory = new HouseHistory();
+        encounterHistory = new EncounterHistory();
+        hospitalDirectory = new HospitalDirectory();
+        appointmentHistory = new AppointmentHistory();
+        vitals = new Vitals();
         UserTypetxt.setEnabled(false);
-        LogOutbtn.setVisible(false);
+        LogInbtn.setEnabled(true);
     }
 
     /**
@@ -45,67 +62,99 @@ public class HomeJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        LogOutbtn = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel2 = new javax.swing.JPanel();
-        LogInbtn = new javax.swing.JButton();
-        CommAdminbtn = new javax.swing.JButton();
-        SysAdminbtn = new javax.swing.JButton();
-        HospitalAdminbtn = new javax.swing.JButton();
-        Doctorbtn = new javax.swing.JButton();
-        Patientbtn = new javax.swing.JButton();
-        UserTypetxt = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        Passwordtxt = new javax.swing.JPasswordField();
-        Passwordlbl1 = new javax.swing.JLabel();
-        UserNametxt = new javax.swing.JTextField();
-        UserNamelbl1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         UserTypelbl1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        UserNamelbl1 = new javax.swing.JLabel();
+        UserNametxt = new javax.swing.JTextField();
+        Passwordlbl1 = new javax.swing.JLabel();
+        Passwordtxt = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        UserTypetxt = new javax.swing.JTextField();
+        Patientbtn = new javax.swing.JButton();
+        Doctorbtn = new javax.swing.JButton();
+        HospitalAdminbtn = new javax.swing.JButton();
+        SysAdminbtn = new javax.swing.JButton();
+        CommAdminbtn = new javax.swing.JButton();
+        LogInbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        LogOutbtn.setText("LogOut");
-        LogOutbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogOutbtnActionPerformed(evt);
-            }
-        });
+        UserTypelbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        UserTypelbl1.setText("Welcome");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setText("to");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel9.setText("City");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setText("Medical");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogOutbtn)
-                .addGap(14, 14, 14))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(UserTypelbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
-                .addComponent(LogOutbtn)
-                .addGap(21, 21, 21))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(UserTypelbl1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addContainerGap(356, Short.MAX_VALUE))
         );
 
-        LogInbtn.setText("LogIn");
-        LogInbtn.addActionListener(new java.awt.event.ActionListener() {
+        jSplitPane1.setLeftComponent(jPanel1);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setText("LOG IN");
+
+        UserNamelbl1.setText("UserName");
+
+        Passwordlbl1.setText("Password");
+
+        jLabel7.setText("User Type:");
+
+        Patientbtn.setText("Patient");
+        Patientbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogInbtnActionPerformed(evt);
+                PatientbtnActionPerformed(evt);
             }
         });
 
-        CommAdminbtn.setText("Community Admin");
-        CommAdminbtn.addActionListener(new java.awt.event.ActionListener() {
+        Doctorbtn.setText("Doctor");
+        Doctorbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CommAdminbtnActionPerformed(evt);
+                DoctorbtnActionPerformed(evt);
+            }
+        });
+
+        HospitalAdminbtn.setText("Hospital Admin");
+        HospitalAdminbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HospitalAdminbtnActionPerformed(evt);
             }
         });
 
@@ -116,30 +165,19 @@ public class HomeJFrame extends javax.swing.JFrame {
             }
         });
 
-        HospitalAdminbtn.setText("Hospital Admin");
-
-        Doctorbtn.setText("Doctor");
-        Doctorbtn.addActionListener(new java.awt.event.ActionListener() {
+        CommAdminbtn.setText("Community Admin");
+        CommAdminbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoctorbtnActionPerformed(evt);
+                CommAdminbtnActionPerformed(evt);
             }
         });
 
-        Patientbtn.setText("Patient");
-        Patientbtn.addActionListener(new java.awt.event.ActionListener() {
+        LogInbtn.setText("LogIn");
+        LogInbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PatientbtnActionPerformed(evt);
+                LogInbtnActionPerformed(evt);
             }
         });
-
-        jLabel7.setText("User Type:");
-
-        Passwordlbl1.setText("Password");
-
-        UserNamelbl1.setText("UserName");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setText("LOG IN");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,7 +188,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(UserTypetxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                            .addComponent(UserTypetxt, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Passwordtxt, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(UserNamelbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(UserNametxt, javax.swing.GroupLayout.Alignment.LEADING))
@@ -203,90 +241,24 @@ public class HomeJFrame extends javax.swing.JFrame {
                     .addComponent(SysAdminbtn))
                 .addGap(18, 18, 18)
                 .addComponent(LogInbtn)
-                .addGap(0, 303, Short.MAX_VALUE))
+                .addGap(0, 279, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
-
-        UserTypelbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        UserTypelbl1.setText("Welcome");
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setText("to");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel9.setText("City");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel10.setText("Medical");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(UserTypelbl1))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(UserTypelbl1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addContainerGap(380, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jSplitPane1.setLeftComponent(jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE))))
+                .addComponent(jSplitPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(jSplitPane1)
                 .addContainerGap())
         );
@@ -294,9 +266,33 @@ public class HomeJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void PatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientbtnActionPerformed
+        // TODO add your handling code here:
+        UserTypetxt.setText("Patient");
+    }//GEN-LAST:event_PatientbtnActionPerformed
+
+    private void DoctorbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorbtnActionPerformed
+        // TODO add your handling code here:
+        UserTypetxt.setText("Doctor");
+    }//GEN-LAST:event_DoctorbtnActionPerformed
+
+    private void HospitalAdminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HospitalAdminbtnActionPerformed
+        // TODO add your handling code here:
+        UserTypetxt.setText("Hospital Admin");
+    }//GEN-LAST:event_HospitalAdminbtnActionPerformed
+
+    private void SysAdminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SysAdminbtnActionPerformed
+        // TODO add your handling code here:
+        UserTypetxt.setText("System Admin");
+    }//GEN-LAST:event_SysAdminbtnActionPerformed
+
+    private void CommAdminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CommAdminbtnActionPerformed
+        // TODO add your handling code here:
+        UserTypetxt.setText("Community Admin");
+    }//GEN-LAST:event_CommAdminbtnActionPerformed
+
     private void LogInbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInbtnActionPerformed
         // TODO add your handling code here:
-        LogOutbtn.setVisible(true);
         String userName = UserNametxt.getText();
         char[] passwordCharArray = Passwordtxt.getPassword();
         String password = String.valueOf(passwordCharArray);
@@ -305,88 +301,49 @@ public class HomeJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Enter valid credentials");
             return;
         }
-        if (userName.equalsIgnoreCase("sysadmin")  && password.equalsIgnoreCase("sysadmin") && UserTypetxt.getText().equalsIgnoreCase("System Admin"))
+        else if (userName.equalsIgnoreCase("sysadmin")  && password.equalsIgnoreCase("sysadmin") && UserTypetxt.getText().equalsIgnoreCase("System Admin"))
         {
-            SysAdminHomeJPanel sysAdmin = new SysAdminHomeJPanel(jSplitMainPane, jPanelMainLeft, jPanelMainRight);
-            WelcomeJPanel welcome = new WelcomeJPanel();
-            jSplitPane1.setLeftComponent(sysAdmin);
-            jSplitPane1.setRightComponent(welcome);
+            SysAdminHomeJFrame sysadhome = new SysAdminHomeJFrame(personDirectory, patientDirectory, cityHistory, communityHistory, houseHistory, encounterHistory, doctorDirectory, hospitalDirectory, vitals);
+            sysadhome.setVisible(true);
 
         }
-        if (!userName.equals("sysadmin")  && !password.equals("sysadmin") && UserTypetxt.getText().equalsIgnoreCase("Doctor"))
+        else if (!userName.equals("sysadmin")  && !password.equals("sysadmin") && UserTypetxt.getText().equalsIgnoreCase("Doctor"))
         {
             for(Doctor doc : doctorDirectory.docHistory){
                 if(doc.getUsername().equalsIgnoreCase(userName) && doc.getPassword().equalsIgnoreCase(password)){
-                    DoctorHomeJPanel doctor = new DoctorHomeJPanel(jSplitMainPane, jPanelMainLeft, jPanelMainRight,userName,password,doc.getDoctorID());
-                    WelcomeJPanel welcome = new WelcomeJPanel();
-                    jSplitPane1.setLeftComponent(doctor);
-                    jSplitPane1.setRightComponent(welcome);
+                    DoctorHomeJFrame doctorhome = new DoctorHomeJFrame(personDirectory, patientDirectory, cityHistory, communityHistory, houseHistory, encounterHistory, doctorDirectory, hospitalDirectory, vitals, appointmentHistory,userName,password,doc.getDoctorID());
+                    doctorhome.setVisible(true);
                 }
             }
         }
-        if (!userName.equals("sysadmin")  && !password.equals("sysadmin") && UserTypetxt.getText().equalsIgnoreCase("Patient"))
+        else if (!userName.equals("sysadmin")  && !password.equals("sysadmin") && UserTypetxt.getText().equalsIgnoreCase("Patient"))
         {
             for(Patient pat : patientDirectory.patHistory){
                 if(pat.getUsername().equalsIgnoreCase(userName) && pat.getPassword().equalsIgnoreCase(password)){
-                    PatientHomeJPanel patient = new PatientHomeJPanel(jSplitMainPane, jPanelMainLeft, jPanelMainRight,userName,password);
-                    WelcomeJPanel welcome = new WelcomeJPanel();
-                    jSplitPane1.setLeftComponent(patient);
-                    jSplitPane1.setRightComponent(welcome);
+                    PatientHomeJFrame patienthome = new PatientHomeJFrame(personDirectory, patientDirectory, cityHistory, communityHistory, houseHistory, encounterHistory, doctorDirectory, hospitalDirectory, vitals, appointmentHistory, userName,password);
+                    patienthome.setVisible(true);
                 }
             }
         }
-        if (userName.equalsIgnoreCase("commadmin")  && password.equalsIgnoreCase("commadmin") && UserTypetxt.getText().equalsIgnoreCase("Community Admin"))
+        else if (userName.equalsIgnoreCase("commadmin")  && password.equalsIgnoreCase("commadmin") && UserTypetxt.getText().equalsIgnoreCase("Community Admin"))
         {
-            CommunityAdminHomeJPanel commAdmin = new CommunityAdminHomeJPanel(jSplitMainPane, jPanelMainLeft, jPanelMainRight);
-            WelcomeJPanel welcome = new WelcomeJPanel();
-            jSplitPane1.setLeftComponent(commAdmin);
-            jSplitPane1.setRightComponent(welcome);
+            CommunityAdminHomeJFrame commadminhome = new CommunityAdminHomeJFrame(personDirectory, patientDirectory, cityHistory, communityHistory, houseHistory, encounterHistory, doctorDirectory, hospitalDirectory, vitals);
+            commadminhome.setVisible(true);
         }
-        if (userName.equalsIgnoreCase("hospadmin")  && password.equalsIgnoreCase("hospadmin") && UserTypetxt.getText().equalsIgnoreCase("hospadmin Admin"))
+        else if (userName.equalsIgnoreCase("hospadmin")  && password.equalsIgnoreCase("hospadmin") && UserTypetxt.getText().equalsIgnoreCase("Hospital Admin"))
         {
-            HospitalAdminJPanel hospAdmin = new HospitalAdminJPanel(jSplitMainPane, jPanelMainLeft, jPanelMainRight);
-            WelcomeJPanel welcome = new WelcomeJPanel();
-            jSplitPane1.setLeftComponent(hospAdmin);
-            jSplitPane1.setRightComponent(welcome);
+            HospitalAdminHomeJFrame hospadminhome = new HospitalAdminHomeJFrame(personDirectory, patientDirectory, cityHistory, communityHistory, houseHistory, encounterHistory, doctorDirectory, hospitalDirectory, vitals);  
+            hospadminhome.setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
         }
 
-        LogInbtn.setEnabled(false);
-        UserNametxt.setEnabled(false);
-        Passwordtxt.setEnabled(false);
-    }//GEN-LAST:event_LogInbtnActionPerformed
-
-    private void CommAdminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CommAdminbtnActionPerformed
-        // TODO add your handling code here:
-        UserTypetxt.setText("Community Admin");
-    }//GEN-LAST:event_CommAdminbtnActionPerformed
-
-    private void SysAdminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SysAdminbtnActionPerformed
-        // TODO add your handling code here:
-        UserTypetxt.setText("System Admin");
-    }//GEN-LAST:event_SysAdminbtnActionPerformed
-
-    private void DoctorbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorbtnActionPerformed
-        // TODO add your handling code here:
-        UserTypetxt.setText("Doctor");
-    }//GEN-LAST:event_DoctorbtnActionPerformed
-
-    private void PatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientbtnActionPerformed
-        // TODO add your handling code here:
-        UserTypetxt.setText("Patient");
-    }//GEN-LAST:event_PatientbtnActionPerformed
-
-    private void LogOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutbtnActionPerformed
-        // TODO add your handling code here:
-        LogOutbtn.setVisible(false);
-        jSplitPane1.setRightComponent(jPanel2);
-        jSplitPane1.setLeftComponent(jPanel1);
         UserNametxt.setText("");
         Passwordtxt.setText("");
-    }//GEN-LAST:event_LogOutbtnActionPerformed
+        UserTypetxt.setText("");
+    }//GEN-LAST:event_LogInbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -414,7 +371,6 @@ public class HomeJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(HomeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -429,7 +385,6 @@ public class HomeJFrame extends javax.swing.JFrame {
     private javax.swing.JButton Doctorbtn;
     private javax.swing.JButton HospitalAdminbtn;
     private javax.swing.JButton LogInbtn;
-    private javax.swing.JButton LogOutbtn;
     private javax.swing.JLabel Passwordlbl1;
     private javax.swing.JPasswordField Passwordtxt;
     private javax.swing.JButton Patientbtn;
@@ -445,8 +400,6 @@ public class HomeJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
 }

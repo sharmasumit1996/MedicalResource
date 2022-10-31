@@ -34,6 +34,12 @@ public class PatientViewVitalsJPanel extends javax.swing.JPanel {
         Username = username;
         Password = password;
         populateTable();
+        EncounterNumbertxt.setEnabled(false);
+        PatientIDtxt.setEnabled(false);
+        Temperaturetxt.setEnabled(false);
+        BloodPressuretxt.setEnabled(false);
+        Doctortxt.setEnabled(false);
+        Pulsetxt.setEnabled(false);      
     }
 
     private void populateTable(){
@@ -81,7 +87,9 @@ public class PatientViewVitalsJPanel extends javax.swing.JPanel {
         VitalsJTable = new javax.swing.JTable();
 
         Vitalslbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Vitalslbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Vitalslbl.setText("Vitals");
+        Vitalslbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         PatientIDlbl1.setText("Encounter No:");
 
@@ -182,14 +190,22 @@ public class PatientViewVitalsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Doctorlbl)
                     .addComponent(Doctortxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 115, Short.MAX_VALUE))
+                .addGap(0, 166, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void VitalsJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VitalsJTableMouseClicked
         // TODO add your handling code here:
+        int selectedRowIndex = VitalsJTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) VitalsJTable.getModel();
+        EncounterNumbertxt.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        PatientIDtxt.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        Temperaturetxt.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        BloodPressuretxt.setText(model.getValueAt(selectedRowIndex, 3).toString());
+        Pulsetxt.setText(model.getValueAt(selectedRowIndex, 4).toString());
+        Doctortxt.setText(model.getValueAt(selectedRowIndex, 5).toString());
     }//GEN-LAST:event_VitalsJTableMouseClicked
 
 

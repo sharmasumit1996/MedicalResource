@@ -79,7 +79,9 @@ public class DoctorJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(720, 640));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DOCTOR");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         Idlbl.setText("ID:");
 
@@ -184,13 +186,6 @@ public class DoctorJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(336, 336, 336))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +215,9 @@ public class DoctorJPanel extends javax.swing.JPanel {
                                 .addComponent(Hospitaltxt)
                                 .addComponent(Usernametxt)
                                 .addComponent(Passwordtxt))))
-                    .addComponent(Passwordlbl))
+                    .addComponent(Passwordlbl)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -549,7 +546,7 @@ private boolean Updatevalidate(String DoctorID, String name, String Age, String 
             }
         }
         for(Doctor doc: doctorDirectory.getDocHistory()){
-            if(doc.getUsername().equals(Username)){
+            if(doc.getUsername().equals(Username) && !doc.getDoctorID().equalsIgnoreCase(DoctorID)){
                JOptionPane.showMessageDialog(this, "Username already exists", "Error", JOptionPane.ERROR_MESSAGE);
                return false;
             }

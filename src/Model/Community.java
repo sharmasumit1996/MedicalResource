@@ -11,13 +11,21 @@ import java.util.ArrayList;
  * @author sumit
  */
 public class Community {
+    private String commID;
     private String commName;
     private String houses;
     private String City;
     public ArrayList<House> houseList = new ArrayList<House>();
     public ArrayList<Hospital> hospList = new ArrayList<Hospital>();
-    
 
+    public String getCommID() {
+        return commID;
+    }
+
+    public void setCommID(String commID) {
+        this.commID = commID;
+    }
+    
     public String getCommName() {
         return commName;
     }

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="312" max="-2" attributes="0"/>
+                              <Component id="Vitalslbl" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Pulselbl" min="-2" pref="81" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Pulsetxt" min="-2" pref="162" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="755" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Doctorlbl" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="Savebtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="Updatebtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Deletebtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="Doctortxt" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Temperaturelbl" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="BloodPressurelbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="PatientIDlbl" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="PatientIDtxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="BloodPressuretxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Temperaturetxt" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="PatientIDlbl1" min="-2" pref="78" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="EncounterNumbertxt" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="Vitalslbl" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="PatientIDlbl1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncounterNumbertxt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="PatientIDlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="PatientIDtxt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Temperaturelbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Temperaturetxt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BloodPressurelbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BloodPressuretxt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Pulsetxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Pulselbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Doctorlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Doctortxt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Savebtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Updatebtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Deletebtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="200" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="115" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="Vitalslbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Vitals"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="PatientIDlbl1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Encounter No:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="EncounterNumbertxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="PatientIDlbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patient Name:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PatientIDtxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Temperaturelbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Temperature:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Temperaturetxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="BloodPressurelbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Blood Pressure:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="BloodPressuretxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Pulselbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pulse:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Pulsetxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Doctorlbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Doctor Name:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Doctortxt">
+    </Component>
+    <Component class="javax.swing.JButton" name="Savebtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SavebtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Updatebtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatebtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Deletebtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletebtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="VitalsJTable">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="6" rowCount="4">
+                <Column editable="true" title="Encounter No." type="java.lang.Object"/>
+                <Column editable="true" title="Patient Name" type="java.lang.Object"/>
+                <Column editable="true" title="Temperature" type="java.lang.Object"/>
+                <Column editable="true" title="Blood Pressure" type="java.lang.Object"/>
+                <Column editable="true" title="Pulse" type="java.lang.Object"/>
+                <Column editable="true" title="Doctor Name" type="java.lang.Object"/>
+              </Table>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="VitalsJTableMouseClicked"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

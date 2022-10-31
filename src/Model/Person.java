@@ -9,7 +9,7 @@ package Model;
  * @author sumit
  */
 public class Person {
-    private String personID;
+    private int personID;
     private String name;
     private int age;
     private String gender;
@@ -18,8 +18,12 @@ public class Person {
     private String house; 
     public Patient patient;
 
-    public String getPersonID() {
+    public int getPersonID() {
         return personID;
+    }
+
+    public void setPersonID(int personID) {
+        this.personID = personID;
     }
 
     public String getName() {
@@ -44,10 +48,6 @@ public class Person {
 
     public Patient getPatient() {
         return patient;
-    }
-
-    public void setPersonID(String personID) {
-        this.personID = personID;
     }
 
     public void setName(String name) {
@@ -80,10 +80,5 @@ public class Person {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-    
-    @Override
-    public String toString(){
-        return personID;
     }
 }

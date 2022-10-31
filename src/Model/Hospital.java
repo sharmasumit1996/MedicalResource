@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author sumit
  */
 public class Hospital {
+    private int HospitalID;
     private String HospitalName;
     private String community;
     private String city;
@@ -19,6 +20,14 @@ public class Hospital {
     private String DocList;
     public ArrayList<Doctor> doctor = new ArrayList<Doctor>();
 
+    public int getHospitalID() {
+        return HospitalID;
+    }
+
+    public void setHospitalID(int HospitalID) {
+        this.HospitalID = HospitalID;
+    }
+    
     public String getHospitalName() {
         return HospitalName;
     }

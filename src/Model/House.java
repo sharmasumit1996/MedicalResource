@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author sumit
  */
 public class House {
+    private int HouseID;
     private int HouseNumber;
     private String Street;
     private String community;
@@ -18,6 +19,14 @@ public class House {
     private int zipcode;
     private String perList;
     public ArrayList<Person> person = new ArrayList<Person>();
+
+    public int getHouseID() {
+        return HouseID;
+    }
+
+    public void setHouseID(int HouseID) {
+        this.HouseID = HouseID;
+    }
 
     public int getHouseNumber() {
         return HouseNumber;
